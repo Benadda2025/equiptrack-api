@@ -19,6 +19,7 @@ SQLALCHEMY_DATABASE_URI = os.environ.get(
     "SQLALCHEMY_DATABASE_URI",
     "sqlite:///" + os.path.join(basedir, "app.db"),
 )
+FAB_API_SWAGGER_UI = True
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
 
