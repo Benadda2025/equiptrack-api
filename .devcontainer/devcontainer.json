@@ -1,0 +1,30 @@
+{
+  "name": "equiptrack-api (Flask AppBuilder)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/equiptrack-api",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [5000, 5432],
+  "portsAttributes": {
+    "5000": { "label": "Flask API", "onAutoForward": "notify" },
+    "5432": { "label": "Postgres" }
+  },
+  "postCreateCommand": "pip install --user -r requirements.txt",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.testing.pytestEnabled": true,
+        "editor.formatOnSave": true,
+        "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-postgresql-client2"
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+Flask-AppBuilder>=4.5,<5
+Flask-JWT-Extended
+Flask-Migrate
+psycopg2-binary
+python-dotenv
+pytest
+ruff

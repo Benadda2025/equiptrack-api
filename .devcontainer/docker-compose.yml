@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/equiptrack-api:cached
+    command: sleep infinity
+    environment:
+      FLASK_APP: app
+      FLASK_DEBUG: "1"
+      SECRET_KEY: dev-only-change-me
+      JWT_SECRET_KEY: dev-only-change-me-too
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://equiptrack:equiptrack@db:5432/equiptrack
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: equiptrack
+      POSTGRES_PASSWORD: equiptrack
+      POSTGRES_DB: equiptrack
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
